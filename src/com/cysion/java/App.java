@@ -14,7 +14,8 @@ public class App {
     public void run() {
         System.out.println("运行..");
 //        easyQ.testReverse();
-        easyQ.testL2U();
-
+//        easyQ.testL2U();
+//        easyQ.testfibonacci();
+        easyQ.testRemoveElement();
     }
 }
