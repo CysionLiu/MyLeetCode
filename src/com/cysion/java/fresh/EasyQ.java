@@ -6,6 +6,7 @@ package com.cysion.java.fresh;
  * 145. 大小写转换
  * 366. 斐波纳契数列
  * 452. 删除链表中的元素
+ * 463. 整数排序--冒泡
  */
 public class EasyQ {
 
@@ -118,6 +119,35 @@ public class EasyQ {
         while (foo.next != null) {
             System.out.print(foo.next.var + "->");
             foo.next = foo.next.next;
+        }
+    }
+
+    //463. 整数排序--冒泡
+    public int[] sortIntegers(int[] A) {
+        int len = A.length;
+        for(int i=0;i<len-1;i++){
+            for(int j=0;j<len-1;j++){
+                if(A[j]>A[j+1]){
+                    int t = A[j];
+                    A[j] = A[j+1];
+                    A[j+1] = t;
+                }
+            }
+        }
+        return A;
+    }
+
+    public void testSort(){
+        int[] a = {4,2,67,3,98,6,1,10,95,45,32,12};
+        int[] b = {111,2,444,3,1,6,666,10,95,451,2,12};
+        a = sortIntegers(a);
+        for (int i : a) {
+            System.out.print(i+"->");
+        }
+        System.out.println("------");
+        b = sortIntegers(b);
+        for (int i : b) {
+            System.out.print(i+"->");
         }
     }
 }
