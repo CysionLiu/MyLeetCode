@@ -17,6 +17,7 @@ public class App {
 //        easyQ.testL2U();
 //        easyQ.testfibonacci();
 //        easyQ.testRemoveElement();
-        easyQ.testSort();
+//        easyQ.testSort();
+        easyQ.testCountNodes();
     }
 }
