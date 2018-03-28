@@ -1,4 +1,5 @@
 package com.cysion.java.fresh;
+
 /**
  * lintcode入门级题目
  * created by Cysion(刘咸尚) on 23th March 2018
@@ -125,29 +126,61 @@ public class EasyQ {
     //463. 整数排序--冒泡
     public int[] sortIntegers(int[] A) {
         int len = A.length;
-        for(int i=0;i<len-1;i++){
-            for(int j=0;j<len-1;j++){
-                if(A[j]>A[j+1]){
+        for (int i = 0; i < len - 1; i++) {
+            for (int j = 0; j < len - 1; j++) {
+                if (A[j] > A[j + 1]) {
                     int t = A[j];
-                    A[j] = A[j+1];
-                    A[j+1] = t;
+                    A[j] = A[j + 1];
+                    A[j + 1] = t;
                 }
             }
         }
         return A;
     }
 
-    public void testSort(){
-        int[] a = {4,2,67,3,98,6,1,10,95,45,32,12};
-        int[] b = {111,2,444,3,1,6,666,10,95,451,2,12};
+    public void testSort() {
+        int[] a = {4, 2, 67, 3, 98, 6, 1, 10, 95, 45, 32, 12};
+        int[] b = {111, 2, 444, 3, 1, 6, 666, 10, 95, 451, 2, 12};
         a = sortIntegers(a);
         for (int i : a) {
-            System.out.print(i+"->");
+            System.out.print(i + "->");
         }
         System.out.println("------");
         b = sortIntegers(b);
         for (int i : b) {
-            System.out.print(i+"->");
+            System.out.print(i + "->");
         }
+    }
+
+    //466. 链表节点计数
+    public int countNodes(ListNode head) {
+        // write your code here
+        if (head == null) {
+            return 0;
+        }
+        int c = 1;
+        while (head.next != null) {
+            c++;
+            head.next = head.next.next;
+        }
+        return c;
+    }
+
+    public void testCountNodes() {
+        ListNode node1 = new ListNode(3);
+        ListNode node2 = new ListNode(1);
+        ListNode node3 = new ListNode(3);
+        ListNode node4 = new ListNode(6);
+        ListNode node5 = new ListNode(9);
+        ListNode node6 = new ListNode(12);
+        ListNode node7 = new ListNode(3);
+        node1.next = node2;
+        node2.next = node3;
+        node3.next = node4;
+        node4.next = node5;
+        node5.next = node6;
+        node6.next = node7;
+        int n = countNodes(node1);
+        System.out.println("节点个数为:" + n);
     }
 }
