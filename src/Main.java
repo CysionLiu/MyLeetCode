@@ -1,7 +1,9 @@
-import com.cysion.java.App;
+import com.cysion.java.easy.EasyApp;
+import com.cysion.java.fresh.FreshApp;
 
 public class Main {
     public static void main(String[] args) {
-        new App().run();
+//        new FreshApp().run();
+        new EasyApp().run();
     }
 }

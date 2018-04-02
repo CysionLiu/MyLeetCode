@@ -14,7 +14,7 @@ import java.util.List;
  * 632. 二叉树的最大节点
  * 763. Hex Conversion
  */
-public class EasyQ {
+public class Fresh {
 
     //37. 反转一个3位整数
     public int reverse(int num) {
