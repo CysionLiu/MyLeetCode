@@ -1,5 +1,8 @@
 package com.cysion.java.fresh;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * lintcode入门级题目
  * created by Cysion(刘咸尚) on 23th March 2018
@@ -8,6 +11,8 @@ package com.cysion.java.fresh;
  * 366. 斐波纳契数列
  * 452. 删除链表中的元素
  * 463. 整数排序--冒泡
+ * 632. 二叉树的最大节点
+ * 763. Hex Conversion
  */
 public class EasyQ {
 
@@ -182,5 +187,58 @@ public class EasyQ {
         node6.next = node7;
         int n = countNodes(node1);
         System.out.println("节点个数为:" + n);
+    }
+
+    public class TreeNode {
+        public int val;
+        public TreeNode left, right;
+
+        public TreeNode(int val) {
+            this.val = val;
+            this.left = this.right = null;
+        }
+    }
+
+    // 632. 二叉树的最大节点
+    public TreeNode treenode = new TreeNode(Integer.MIN_VALUE);
+
+    public TreeNode maxNode(TreeNode root) {
+        // Write your code here
+        if (root == null)
+            return null;
+        else {
+            if (root.val > treenode.val)
+                treenode = root;
+            maxNode(root.left);
+            maxNode(root.right);
+        }
+        return treenode;
+    }
+
+    //763. Hex Conversion
+    public String hexConversion(int n, int k) {
+        // write your code here
+        List<Integer> a = new ArrayList();
+        while (n / k != 0) {
+            a.add(n % k);
+            n = n / k;
+        }
+        a.add(n % k);
+        StringBuilder builder = new StringBuilder();
+        for (int i = a.size() - 1; i >= 0; i--) {
+            if (a.get(i) > 9) {
+                char c = (char) (a.get(i) + 55);
+                builder.append(c);
+            } else {
+                builder.append(a.get(i) + "");
+            }
+        }
+        return builder.toString();
+    }
+
+    public void testhexConversion() {
+        System.out.println(hexConversion(5, 2));
+        System.out.println(hexConversion(30, 16));
+        System.out.println(hexConversion(42, 8));
     }
 }

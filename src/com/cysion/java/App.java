@@ -18,6 +18,7 @@ public class App {
 //        easyQ.testfibonacci();
 //        easyQ.testRemoveElement();
 //        easyQ.testSort();
-        easyQ.testCountNodes();
+//        easyQ.testCountNodes();
+        easyQ.testhexConversion();
     }
 }
