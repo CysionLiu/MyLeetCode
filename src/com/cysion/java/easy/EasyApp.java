@@ -8,7 +8,8 @@ public class EasyApp {
         easy1 = new Easy1();
     }
     public void run(){
-        easy1.testAPlusB();
-
+//        easy1.testAPlusB();
+//        easy1.testEnd0();
+        easy1.testMergeSorted();
     }
 }
