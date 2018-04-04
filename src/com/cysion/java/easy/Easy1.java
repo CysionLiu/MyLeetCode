@@ -78,4 +78,39 @@ public class Easy1 {
             System.out.println("" + i);
         }
     }
+
+    //8. 旋转字符串,这种方式多占内存；还有循环一个个的旋转，
+    public void rotateString(char[] str, int offset) {
+        // write your code here
+        int n = str.length;
+        if(n==0){
+            return;
+        }
+        offset = offset%n;
+        char[] tmp = new char[offset];
+        for(int i=n-offset;i<n;i++){
+            tmp[i+offset-n] = str[i];
+        }
+        for(int i=n-offset-1;i>-1;i--){
+            str[i+offset] = str[i];
+        }
+        for(int i = 0;i<offset;i++){
+            str[i] = tmp[i];
+        }
+    }
+
+    public void testRotate(){
+        char[] t = {'d','p','o','g','e','w'};
+        rotateString(t,2);
+        for (char c : t) {
+            System.out.print(c);
+        }
+        System.out.println();
+        System.out.println("--");
+        char[] t2 = {'d','p','o','g','e','w'};
+        rotateString(t2,4);
+        for (char c : t2) {
+            System.out.print(c);
+        }
+    }
 }

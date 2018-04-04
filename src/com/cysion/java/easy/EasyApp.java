@@ -10,6 +10,7 @@ public class EasyApp {
     public void run(){
 //        easy1.testAPlusB();
 //        easy1.testEnd0();
-        easy1.testMergeSorted();
+//        easy1.testMergeSorted();
+        easy1.testRotate();
     }
 }
