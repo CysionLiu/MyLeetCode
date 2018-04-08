@@ -11,6 +11,7 @@ public class EasyApp {
 //        easy1.testAPlusB();
 //        easy1.testEnd0();
 //        easy1.testMergeSorted();
-        easy1.testRotate();
+//        easy1.testRotate();
+        easy1.testStr();
     }
 }

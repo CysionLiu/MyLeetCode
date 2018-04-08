@@ -5,6 +5,7 @@ package com.cysion.java.easy;
  * //1. A + B 问题
  * //2. 尾部的零
  * //6. 合并排序数组 II
+ * //13.字符串查找
  */
 public class Easy1 {
 
@@ -112,5 +113,43 @@ public class Easy1 {
         for (char c : t2) {
             System.out.print(c);
         }
+    }
+
+    //13. 字符串查找
+    public int strStr(String source, String target) {
+        // write your code here
+        if(source==null||target==null){
+            return -1;
+        }
+        int m = source.length();
+        int n = target.length();
+        if(m<n){
+            return -1;
+        }
+        if(m==0&&n==0){
+            return 0;
+        }
+        for(int i=0;i<m;i++){
+            boolean found = true;
+            int t = i;
+            for(int j=0;j<n;j++){
+                if(t<m&&source.charAt(t)==target.charAt(j)){
+                    t++;
+                }else{
+                    found = false;
+                    break;
+                }
+            }
+            if(found){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public void testStr(){
+        System.out.println("a$$"+strStr("source","rced"));
+        System.out.println("a$$"+strStr("tartarget","target"));
+        System.out.println("a$$"+strStr("sdffsdessa","ssa"));
     }
 }
