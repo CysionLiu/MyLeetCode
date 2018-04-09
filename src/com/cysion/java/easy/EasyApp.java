@@ -12,6 +12,7 @@ public class EasyApp {
 //        easy1.testEnd0();
 //        easy1.testMergeSorted();
 //        easy1.testRotate();
-        easy1.testStr();
+//        easy1.testStr();
+        easy1.testBineary();
     }
 }

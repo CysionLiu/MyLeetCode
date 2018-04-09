@@ -6,6 +6,7 @@ package com.cysion.java.easy;
  * //2. 尾部的零
  * //6. 合并排序数组 II
  * //13.字符串查找
+ * //14.二分查找
  */
 public class Easy1 {
 
@@ -151,5 +152,51 @@ public class Easy1 {
         System.out.println("a$$"+strStr("source","rced"));
         System.out.println("a$$"+strStr("tartarget","target"));
         System.out.println("a$$"+strStr("sdffsdessa","ssa"));
+    }
+
+    //14.二分查找
+    public int binarySearch(int[] nums, int target) {
+        // write your code here
+        int n = nums.length-1;
+        if(n==0){
+            return -1;
+        }
+        int low = 0;
+        int mid = (n-low)/2;
+        if(nums[low]>target){
+            return -1;
+        }
+        if(nums[n]<target){
+            return -1;
+        }
+        while(mid!=low&&mid!=n){
+
+            if(nums[mid] > target){
+                n=mid;
+                mid = (n+low)/2;
+            }else if(nums[mid] < target){
+                low = mid;
+                mid = (n+low)/2;
+            }else{
+                int k=0;
+                for(int i=mid;i>=1;i--){
+                    if(nums[i-1]!=target){
+                        return i++;
+                    }
+                    k = i;
+                }
+                mid = k;
+
+            }
+        }
+        if(nums[mid] == target){
+            return mid;
+        }
+        return -1;
+    }
+
+    public void testBineary(){
+        int[] A = {1, 2, 3, 3, 4, 5,8,9, 10,13,16};
+        System.out.println(binarySearch(A,10));
     }
 }
