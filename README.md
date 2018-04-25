@@ -3,4 +3,3 @@
 
 有的题目可能提供kotlin的解决方式
 
-test linux
