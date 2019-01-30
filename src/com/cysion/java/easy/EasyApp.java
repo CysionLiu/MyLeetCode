@@ -18,6 +18,7 @@ public class EasyApp {
 //        easy1.testBineary();
 //        easy2.testMatrix();
 //        easy2.testReverse();
-        easy2.testrecoverRotatedSortedArray();
+//        easy2.testrecoverRotatedSortedArray();
+        easy2.testMaxSub();
     }
 }

@@ -1,5 +1,7 @@
 package com.cysion.java.easy;
 
+import com.cysion.java.study.primary.Case1;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -103,8 +105,8 @@ public class Easy2 {
         }
         System.out.println("\n翻转链表...");
         ListNode reverse = reverse(n0);
-        while (reverse!=null){
-            System.out.print(reverse.x+"-->");
+        while (reverse != null) {
+            System.out.print(reverse.x + "-->");
             reverse = reverse.next;
         }
     }
@@ -112,33 +114,33 @@ public class Easy2 {
     //恢复旋转排序数组
     public List<Integer> recoverRotatedSortedArray(List<Integer> nums) {
         // write your code here
-        if(nums==null||nums.size()==0){
+        if (nums == null || nums.size() == 0) {
             return nums;
         }
         Integer min = nums.get(0);
         int k = 0;
-        int n  = nums.size();
-        for(int i = 1;i<n;i++){
-            if(nums.get(i)<min){
+        int n = nums.size();
+        for (int i = 1; i < n; i++) {
+            if (nums.get(i) < min) {
                 k = i;
                 min = nums.get(i);
             }
         }
-        if(k==0){
+        if (k == 0) {
             return nums;
         }
         List<Integer> newN = new ArrayList();
-        for(int i=0;i<n-k;i++){
-            newN.add(nums.get(i+k));
+        for (int i = 0; i < n - k; i++) {
+            newN.add(nums.get(i + k));
         }
-        for(int i= 0;i<k;i++){
+        for (int i = 0; i < k; i++) {
             newN.add(nums.get(i));
         }
         nums = newN;
         return nums;
     }
 
-    public void testrecoverRotatedSortedArray(){
+    public void testrecoverRotatedSortedArray() {
         List<Integer> newN = new ArrayList();
         newN.add(7);
         newN.add(8);
@@ -151,12 +153,33 @@ public class Easy2 {
         newN.add(5);
         newN.add(6);
         for (Integer integer : newN) {
-            System.out.print(integer+",");
+            System.out.print(integer + ",");
         }
         System.out.println("\n翻转后...");
         newN = recoverRotatedSortedArray(newN);
         for (Integer integer : newN) {
-            System.out.print(integer+",");
+            System.out.print(integer + ",");
         }
+    }
+
+    public int maxSubArray(int[] nums) {
+        // write your code here
+        int sum = 0;
+        int min = -1000000000;
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            sum = sum + nums[i];
+            if (sum > min ){
+                min = sum;
+            } else if(sum<0){
+                sum = 0;
+            }
+        }
+        return min;
+    }
+
+    public void testMaxSub(){
+        int A[] = { -6, 10, -5, 6, -7, -1, -1 };
+        System.out.println(maxSubArray(A));
     }
 }
