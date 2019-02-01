@@ -1,5 +1,6 @@
 package com.cysion.java.study.primary;
 
+import com.cysion.java.study.MyIterator;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
 
@@ -8,7 +9,8 @@ import java.util.*;
 public class App {
     public static void main(String[] args) {
 //        testGcd();
-        testBs(args);
+//        testBs(args);
+        testStack();
     }
 
     //测试最大公约数
@@ -35,7 +37,7 @@ public class App {
 
     private static void randarr() {
         List<Integer> tmp = new ArrayList<>();
-        for (int i = 0; i < 3000; i++) {
+        for (int i = -300; i < 300; i++) {
             if (new Random().nextBoolean()) {
                 tmp.add(i);
             }
@@ -45,8 +47,29 @@ public class App {
         System.out.println();
         tmp.forEach(integer ->
         {
-            System.out.print(integer + " ");
+            System.out.print(integer + "\n");
         });
+    }
+
+    public static void testStack() {
+        MyStack<String> myStack = new MyStack<>();
+        while (!StdIn.isEmpty()) {
+            String t = StdIn.readString();
+            if ("p".equals(t)) {
+                myStack.pop();
+            } else {
+                myStack.push(t);
+            }
+            for (int i = 0; i < myStack.size(); i++) {
+                System.out.print(myStack.get(i) + ",");
+            }
+            System.out.println();
+            MyIterator iterator = myStack.iterator();
+            while (iterator.hasNext()) {
+                System.out.print(iterator.next() + "-");
+            }
+            System.out.println("");
+        }
     }
 }
 
