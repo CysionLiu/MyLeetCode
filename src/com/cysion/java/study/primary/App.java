@@ -10,7 +10,8 @@ public class App {
     public static void main(String[] args) {
 //        testGcd();
 //        testBs(args);
-        testStack();
+//        testStack();
+        testQueue();
     }
 
     //测试最大公约数
@@ -52,7 +53,7 @@ public class App {
     }
 
     public static void testStack() {
-        MyStack<String> myStack = new MyStack<>();
+        MyLinkedStack<String> myStack = new MyLinkedStack<>();
         while (!StdIn.isEmpty()) {
             String t = StdIn.readString();
             if ("p".equals(t)) {
@@ -60,10 +61,22 @@ public class App {
             } else {
                 myStack.push(t);
             }
-            for (int i = 0; i < myStack.size(); i++) {
-                System.out.print(myStack.get(i) + ",");
+            MyIterator iterator = myStack.iterator();
+            while (iterator.hasNext()) {
+                System.out.print(iterator.next() + "-");
             }
-            System.out.println();
+            System.out.println("");
+        }
+    }
+    public static void testQueue() {
+        MyQueue<String> myStack = new MyQueue<>();
+        while (!StdIn.isEmpty()) {
+            String t = StdIn.readString();
+            if ("p".equals(t)) {
+                myStack.dequeue();
+            } else {
+                myStack.enqueue(t);
+            }
             MyIterator iterator = myStack.iterator();
             while (iterator.hasNext()) {
                 System.out.print(iterator.next() + "-");
