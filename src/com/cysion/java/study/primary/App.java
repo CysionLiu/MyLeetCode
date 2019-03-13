@@ -1,6 +1,7 @@
 package com.cysion.java.study.primary;
 
 import com.cysion.java.study.MyIterator;
+import com.cysion.java.study.Utils;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdIn;
 
@@ -11,7 +12,16 @@ public class App {
 //        testGcd();
 //        testBs(args);
 //        testStack();
-        testQueue();
+//        testQueue();
+        testSort();
+
+    }
+
+    //    测试排序
+    private static void testSort() {
+        Sorter.bubble(Utils.randArr(1000, true));
+        Sorter.selection(Utils.randArr(1000, true));
+
     }
 
     //测试最大公约数
@@ -36,22 +46,6 @@ public class App {
     }
 
 
-    private static void randarr() {
-        List<Integer> tmp = new ArrayList<>();
-        for (int i = -300; i < 300; i++) {
-            if (new Random().nextBoolean()) {
-                tmp.add(i);
-            }
-
-        }
-        Collections.shuffle(tmp);
-        System.out.println();
-        tmp.forEach(integer ->
-        {
-            System.out.print(integer + "\n");
-        });
-    }
-
     public static void testStack() {
         MyLinkedStack<String> myStack = new MyLinkedStack<>();
         while (!StdIn.isEmpty()) {
@@ -68,6 +62,7 @@ public class App {
             System.out.println("");
         }
     }
+
     public static void testQueue() {
         MyQueue<String> myStack = new MyQueue<>();
         while (!StdIn.isEmpty()) {
