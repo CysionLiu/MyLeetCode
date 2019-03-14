@@ -4,8 +4,8 @@ import com.cysion.java.study.Utils;
 
 public class Sorter {
 
-    public static int less(Comparable a, Comparable b) {
-        return a.compareTo(b);
+    public static boolean less(Comparable a, Comparable b) {
+        return a.compareTo(b)<0;
     }
 
     public static void exch(Comparable[] arr, int i, int j) {
@@ -26,7 +26,7 @@ public class Sorter {
 
     public static boolean isSorted(Comparable[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
-            if (less(arr[i], arr[i + 1]) > 0) {
+            if (less(arr[i+1], arr[i])) {
                 return false;
             }
         }
@@ -39,7 +39,7 @@ public class Sorter {
         int N = arr.length;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N - i - 1; j++) {
-                if (less(arr[j], arr[j + 1]) > 0) {
+                if (less(arr[j+1], arr[j])) {
                     exch(arr, j, j + 1);
                 }
             }
@@ -54,7 +54,7 @@ public class Sorter {
         for (int i = 0; i < N; i++) {
             int min = i;
             for (int j = i; j < N; j++) {
-                if (less(arr[min], arr[j]) > 0) {
+                if (less(arr[j], arr[min])) {
                     min = j;
                 }
             }
@@ -66,6 +66,15 @@ public class Sorter {
 
     //插入排序
     public static void insertion(Comparable[] arr) {
-
+        int N = arr.length;
+        for (int i = 1; i < N; i++) {
+            for (int j = i; j > 0; j--) {
+                if (less(arr[j], arr[j - 1])) {
+                    exch(arr, j, j - 1);
+                }
+            }
+        }
+        System.out.println("\n插入排序：");
+        show(arr);
     }
 }

@@ -34,4 +34,23 @@ public class Utils {
         System.out.println("原数组是否有序：" + Sorter.isSorted(arr));
         return arr;
     }
+
+    public static Integer[] randMurmur(int n) {
+        System.out.println("\n----------------原数组----------------------");
+        List<Integer> tmp = new ArrayList<>();
+        for (int i = 2; i < n; i++) {
+            if (new Random().nextBoolean()) {
+                tmp.add(new Random().nextInt(i));
+            }
+        }
+        Collections.shuffle(tmp);
+        Integer[] arr = new Integer[tmp.size()];
+        for (int i = 0; i < tmp.size(); i++) {
+            System.out.print(tmp.get(i) + " > ");
+            arr[i] = tmp.get(i);
+        }
+        System.out.println();
+        System.out.println("原数组是否有序：" + Sorter.isSorted(arr));
+        return arr;
+    }
 }
