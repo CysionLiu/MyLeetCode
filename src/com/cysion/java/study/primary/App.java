@@ -19,12 +19,17 @@ public class App {
 
     //    测试排序
     private static void testSort() {
-        Sorter.bubble(Utils.randArr(200, true));
-        Sorter.selection(Utils.randArr(200, false));
-        Sorter.insertion(Utils.randArr(200, false));
-        Sorter.bubble(Utils.randMurmur(200));
-        Sorter.selection(Utils.randMurmur(200));
-        Sorter.insertion(Utils.randMurmur(200));
+//        Sorter.bubble(Utils.randArr(200, true));
+//        Sorter.selection(Utils.randArr(200, false));
+//        Sorter.insertion(Utils.randArr(200, false));
+//        Sorter.shill(Utils.randArr(2000, false));
+        Sorter.sortMerge(Utils.randArr(2000, false));
+        //------------------------------------------
+//        Sorter.bubble(Utils.randMurmur(200));
+//        Sorter.selection(Utils.randMurmur(200));
+//        Sorter.insertion(Utils.randMurmur(200));
+//        Sorter.shill(Utils.randMurmur(2000));
+        Sorter.sortMerge(Utils.randMurmur(2000));
 
     }
 

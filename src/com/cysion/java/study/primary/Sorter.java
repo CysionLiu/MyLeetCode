@@ -5,7 +5,7 @@ import com.cysion.java.study.Utils;
 public class Sorter {
 
     public static boolean less(Comparable a, Comparable b) {
-        return a.compareTo(b)<0;
+        return a.compareTo(b) < 0;
     }
 
     public static void exch(Comparable[] arr, int i, int j) {
@@ -26,7 +26,7 @@ public class Sorter {
 
     public static boolean isSorted(Comparable[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
-            if (less(arr[i+1], arr[i])) {
+            if (less(arr[i + 1], arr[i])) {
                 return false;
             }
         }
@@ -39,7 +39,7 @@ public class Sorter {
         int N = arr.length;
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N - i - 1; j++) {
-                if (less(arr[j+1], arr[j])) {
+                if (less(arr[j + 1], arr[j])) {
                     exch(arr, j, j + 1);
                 }
             }
@@ -76,5 +76,70 @@ public class Sorter {
         }
         System.out.println("\n插入排序：");
         show(arr);
+    }
+
+    //希尔排序
+    public static void shill(Comparable[] arr) {
+        int N = arr.length;
+        int step = N / 2;
+        while (step >= 1) {
+            for (int i = 0; i < step; i++) {
+                for (int j = step + i; j < N; j += step) {
+                    for (int k = j; k >= step; k -= step) {
+                        if (less(arr[k], arr[k - step])) {
+                            exch(arr, k, k - step);
+                        }
+                    }
+                }
+            }
+            step /= 2;
+        }
+        System.out.println("\n希尔排序：");
+        show(arr);
+    }
+
+    //归并排序的辅助数组
+    private static Comparable[] mergeAux;
+
+    //归并排序
+    public static void sortMerge(Comparable[] arr) {
+        int N = arr.length;
+        mergeAux = new Comparable[N];
+        sortMerge(arr, 0, N-1);
+        System.out.println("\n归并排序：");
+        show(arr);
+    }
+
+    private static void sortMerge(Comparable[] arr, int low, int hi) {
+        if (hi <= low) {
+            return;
+        }
+        int mid = (hi + low) / 2;
+        sortMerge(arr, low, mid);
+        sortMerge(arr, mid + 1, hi);
+        combine(arr, low, mid, hi);
+    }
+
+    private static void combine(Comparable[] arr, int low, int mid, int hi) {
+        int p = low;
+        int q = mid + 1;
+        for(int k=low;k<=hi;k++){
+            mergeAux[k] = arr[k];
+        }
+        for (int i = low; i <= hi; i++) {
+            if (p > mid) {
+                arr[i] = mergeAux[q++];
+                continue;
+            }
+            if (q > hi) {
+                arr[i] = mergeAux[p++];
+                continue;
+            }
+            if (less(mergeAux[p], mergeAux[q])) {
+                arr[i] = mergeAux[p++];
+            } else {
+                arr[i] = mergeAux[q++];
+            }
+        }
     }
 }
